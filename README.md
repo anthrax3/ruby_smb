@@ -1,6 +1,11 @@
 # Smb2
 
 [![Build Status](https://travis-ci.org/rapid7/smb2.svg?branch=master)](https://travis-ci.org/rapid7/smb2)
+[![Code Climate](https://codeclimate.com/github/rapid7/smb2.png)](https://codeclimate.com/github/rapid7/smb2)
+[![Dependency Status](https://gemnasium.com/rapid7/smb2.svg)](https://gemnasium.com/rapid7/smb2)
+[![Gem Version](https://badge.fury.io/rb/smb2.svg)](http://badge.fury.io/rb/smb2)
+[![Inline docs](http://inch-ci.org/github/rapid7/smb2.svg)](http://inch-ci.org/github/rapid7/smb2)
+[![PullReview stats](https://www.pullreview.com/github/rapid7/smb2/badges/master.svg)](https://www.pullreview.com/github/rapid7/smb2/reviews/master)
 
 A packet parsing and manipulation library for the SMB2 protocol.
 
