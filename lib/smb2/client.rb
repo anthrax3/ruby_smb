@@ -27,6 +27,11 @@ class Smb2::Client
   # @return [Fixnum]
   attr_accessor :capabilities
 
+  # The dialect chosen by the server from our proferred list
+  #
+  # @return [Fixnum]
+  attr_accessor :dialect_revision
+
   # @return [Smb2::Dispatcher,#send_packet,#recv_packet]
   attr_accessor :dispatcher
 
@@ -148,9 +153,10 @@ class Smb2::Client
   #
   # @return [void]
   def negotiate
+    dialects = [0x202, 0x300]
     packet = Smb2::Packet::NegotiateRequest.new(
-      dialects: "\x02\x02".force_encoding('binary'),
-      dialect_count: 1,
+      dialects: dialects.pack('v*'),
+      dialect_count: dialects.size,
       client_guid: 0,
     )
 
@@ -162,6 +168,8 @@ class Smb2::Client
     @max_read_size = response_packet.max_read_size
     @max_transaction_size = response_packet.max_transaction_size
     @max_write_size = response_packet.max_write_size
+
+    @dialect_revision = response_packet.dialect_revision
 
     @state = :negotiated
 
